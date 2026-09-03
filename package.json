@@ -1,33 +1,30 @@
 {
-  "name": "react",
+  "name": "reza-peyman-amiri-portfolio",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "main": "src/index.tsx",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
-    "@emailjs/browser": "4.4.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-router-dom": "7.5.1",
-    "react-scripts": "^5.0.0",
-    "sweetalert2": "^11.22.3",
-    "typescript": "4.9.5"
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.454.0",
+    "next": "14.2.35",
+    "next-themes": "^0.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "19.0.0",
-    "@types/react-dom": "19.0.0",
-    "loader-utils": "3.2.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "@types/node": "^20.16.11",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3"
+  }
 }

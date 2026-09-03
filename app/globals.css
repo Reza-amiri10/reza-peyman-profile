@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 251 251 253;
+    --bg-elevated: 255 255 255;
+    --fg: 10 14 23;
+    --fg-muted: 75 84 104;
+    --border: 233 235 241;
+  }
+
+  .dark {
+    --bg: 8 11 18;
+    --bg-elevated: 13 18 32;
+    --fg: 244 245 248;
+    --fg-muted: 154 163 184;
+    --border: 28 35 51;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--fg));
+  }
+
+  ::selection {
+    background-color: rgba(79, 124, 255, 0.35);
+    color: inherit;
+  }
+}
+
+@layer utilities {
+  .border-border {
+    border-color: rgb(var(--border));
+  }
+
+  .text-muted {
+    color: rgb(var(--fg-muted));
+  }
+
+  .bg-elevated {
+    background-color: rgb(var(--bg-elevated));
+  }
+
+  .section-padding {
+    @apply py-20 sm:py-28;
+  }
+
+  .bg-grid {
+    background-size: 44px 44px;
+  }
+
+  .mask-fade-bottom {
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  .balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white shadow-glow hover:bg-accent-dark hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply btn border border-border bg-elevated text-[rgb(var(--fg))] hover:border-accent/50 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-border bg-elevated px-3 py-1 text-xs font-medium text-muted;
+  }
+
+  .card {
+    @apply rounded-2xl border border-border bg-elevated shadow-card transition-all duration-300;
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl font-semibold tracking-tight balance;
+  }
+
+  .section-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-accent;
+  }
+}
