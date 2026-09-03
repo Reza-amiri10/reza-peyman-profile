@@ -42,13 +42,13 @@ export const socialLinks = [
   },
   {
     label: "Twitter / X",
-    href: "https://x.com",
+    href: "https://x.com/reza19184310",
     icon: Twitter,
     handle: "@reza_amiri",
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/?hl=en",
+    href: "https://www.instagram.com/rezapeyman92/",
     icon: Instagram,
     handle: "@reza.amiri",
   },
@@ -226,7 +226,7 @@ export const projects: Project[] = [
     description:
       "A retrieval-augmented generation (RAG) app that lets teams query private documents in natural language, with source citations and a multi-step agent workflow for follow-up tasks.",
     tags: ["Next.js", "TypeScript", "OpenAI", "pgvector", "Node.js"],
-    href: "#",
+    href: "https://www.querentapp.com/?utm_source=chatgpt.com",
     repo: "#",
     featured: true,
   },
@@ -235,23 +235,34 @@ export const projects: Project[] = [
     description:
       "A React Native app for field teams to log tasks offline and sync with a Go backend, with role-based auth and real-time status updates.",
     tags: ["React Native", "Go", "PostgreSQL", "REST API"],
-    href: "#",
+    href: "https://www.servicetitan.com/",
     repo: "#",
   },
   {
-    title: "Serverless SaaS Starter",
+    title: "Persian AI Price Comparison",
+
     description:
-      "A production-ready boilerplate combining Next.js, serverless functions, and CI/CD pipelines for shipping SaaS products fast without sacrificing security.",
-    tags: ["Next.js", "AWS", "Docker", "GitHub Actions"],
-    href: "#",
+      "An AI-powered Persian price comparison platform that searches multiple Iranian online stores, aggregates and normalizes product data, compares prices and availability, and helps users find the best available offer.",
+
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "OpenAI",
+      "PostgreSQL",
+      "REST API",
+      "Web Scraping",
+    ],
+
+    href: "https://www.gheymatshenas.ir/?utm_source=chatgpt.com",
+
     repo: "#",
   },
-  {
-    title: "Realtime Collaboration Dashboard",
-    description:
-      "A component-driven analytics dashboard with live data sync via WebSockets, built for performance on large, frequently updating datasets.",
-    tags: ["React", "GraphQL", "Redis", "Tailwind CSS"],
-    href: "#",
-    repo: "#",
-  },
+  // {
+  //   title: "Realtime Collaboration Dashboard",
+  //   description:
+  //     "A component-driven analytics dashboard with live data sync via WebSockets, built for performance on large, frequently updating datasets.",
+  //   tags: ["React", "GraphQL", "Redis", "Tailwind CSS"],
+  //   href: "#",
+  //   repo: "#",
+  // },
 ];
