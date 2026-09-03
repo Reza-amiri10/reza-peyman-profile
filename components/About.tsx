@@ -48,7 +48,7 @@ export function About() {
                   className="flex items-start gap-2.5 text-sm leading-snug"
                 >
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <span>{practice}</span>
+                  <span className="min-w-0">{practice}</span>
                 </li>
               ))}
             </ul>

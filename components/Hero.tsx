@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Download, MapPin } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import { profile, socialLinks } from "@/lib/data";
 
 const stats = [
@@ -26,18 +26,18 @@ export function Hero() {
       />
 
       <div className="container relative grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div>
+        <div className="min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-elevated px-4 py-1.5 text-xs font-medium text-muted"
+            className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-elevated px-4 py-1.5 text-xs font-medium text-muted"
           >
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2 w-2 shrink-0">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            {profile.location}
+            <span className="min-w-0">{profile.location}</span>
           </motion.div>
 
           <motion.h1
@@ -114,7 +114,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="relative mx-auto w-full max-w-md"
+          className="relative mx-auto w-full min-w-0 max-w-md"
         >
           <div className="animate-float">
             <div className="card overflow-hidden">
@@ -126,8 +126,8 @@ export function Hero() {
                   profile.ts
                 </span>
               </div>
-              <pre className="overflow-x-auto px-5 py-5 font-mono text-[13px] leading-relaxed">
-                <code>
+              <pre className="max-w-full overflow-x-auto whitespace-pre-wrap break-words px-4 py-5 font-mono text-[12px] leading-relaxed sm:px-5 sm:text-[13px]">
+                <code className="break-words">
                   <span className="text-accent-teal">const</span>{" "}
                   <span className="text-accent-light">developer</span> = {"{"}
                   {"\n"}

@@ -35,8 +35,9 @@ export function Contact() {
               className="mt-9 flex flex-wrap items-center justify-center gap-3"
             >
               <a href={`mailto:${profile.email}`} className="btn-primary">
-                <Mail className="h-4 w-4" />
-                {profile.email}
+                <Mail className="h-4 w-4 shrink-0" />
+                <span className="hidden xs:inline">{profile.email}</span>
+                <span className="xs:hidden">Email Me</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/reza-peyman-amiri-4362b8335/"
@@ -44,8 +45,9 @@ export function Contact() {
                 rel="noreferrer"
                 className="btn-secondary"
               >
-                Connect on LinkedIn
-                <ArrowUpRight className="h-4 w-4" />
+                <span className="hidden xs:inline">Connect on LinkedIn</span>
+                <span className="xs:hidden">LinkedIn</span>
+                <ArrowUpRight className="h-4 w-4 shrink-0" />
               </a>
             </motion.div>
 

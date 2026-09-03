@@ -10,12 +10,23 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "1.25rem",
+      padding: {
+        DEFAULT: "1.25rem",
+        sm: "1.5rem",
+        lg: "2rem",
+      },
       screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1152px",
         "2xl": "1240px",
       },
     },
     extend: {
+      screens: {
+        xs: "480px",
+      },
       colors: {
         ink: {
           950: "#05070d",

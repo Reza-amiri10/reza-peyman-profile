@@ -33,7 +33,7 @@ export function Approach() {
                     <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
                       <Icon className="h-5 w-5" />
                     </span>
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="text-base font-semibold">
                         {item.title}
                       </h3>
@@ -61,7 +61,7 @@ export function Approach() {
               {currentFocus.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent-teal" />
-                  <span className="leading-relaxed">{item}</span>
+                  <span className="min-w-0 leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>

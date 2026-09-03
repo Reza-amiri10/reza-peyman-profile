@@ -13,8 +13,8 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div
-      className={`mx-auto max-w-2xl ${
-        align === "center" ? "text-center" : "text-left"
+      className={`max-w-2xl ${
+        align === "center" ? "mx-auto text-center" : "text-left"
       }`}
     >
       <p className="section-eyebrow">{eyebrow}</p>

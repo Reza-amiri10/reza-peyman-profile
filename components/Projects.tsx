@@ -19,7 +19,7 @@ export function Projects() {
           align="center"
         />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
           {projects.map((project, i) => (
             <motion.a
               key={project.title}
@@ -29,7 +29,7 @@ export function Projects() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
               className={`card group relative flex flex-col justify-between overflow-hidden p-6 hover:-translate-y-1 hover:border-accent/40 sm:p-7 ${
-                project.featured ? "sm:col-span-2" : ""
+                project.featured ? "md:col-span-2" : ""
               }`}
             >
               <div>

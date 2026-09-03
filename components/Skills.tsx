@@ -18,7 +18,7 @@ export function Skills() {
           align="center"
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
           {skillCategories.map((cat, i) => (
             <motion.div
               key={cat.title}
@@ -42,7 +42,7 @@ export function Skills() {
                     className="flex items-start gap-2 text-sm text-muted"
                   >
                     <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                    <span>{item}</span>
+                    <span className="min-w-0">{item}</span>
                   </li>
                 ))}
               </ul>

@@ -53,7 +53,17 @@ npm run start
 
 ## Deploying
 
-This project deploys cleanly to [Vercel](https://vercel.com) (recommended for Next.js), Netlify, or any Node.js host. For Vercel: push this repo to GitHub and import it at vercel.com/new — no configuration needed.
+This project deploys cleanly to [Vercel](https://vercel.com) (recommended for Next.js), Netlify, or any Node.js host. For Vercel: push this repo to GitHub and import it at vercel.com/new. A `vercel.json` pinning `"framework": "nextjs"` is included so Vercel always uses the correct build output directory (`.next`), even if a project's dashboard settings were previously misconfigured.
+
+## Responsive design notes
+
+This project was audited and hardened for every screen size, from the smallest phones (320px) up through 4K monitors (2560px+), with zero horizontal overflow at any width in between. A few things worth knowing if you extend the design:
+
+- The `.container` class (in `tailwind.config.ts`) has an explicit max-width at every breakpoint, so content stays a comfortable reading width on large monitors instead of stretching edge-to-edge.
+- Any element that mixes an icon with text uses `shrink-0` on the icon and `min-w-0` on the text wrapper — this is what lets text wrap or truncate properly inside flex/grid layouts instead of silently pushing the page wider than the viewport.
+- The Hero's fake code snippet wraps (`whitespace-pre-wrap break-words`) rather than scrolling horizontally, so it's never a source of page overflow.
+- The Contact section's email/LinkedIn buttons show shorter labels below the `xs` (480px) breakpoint to avoid crowding on the smallest phones.
+- `html, body { overflow-x: hidden }` in `globals.css` is a safety net — if you add new content later that's wider than expected, it'll get clipped instead of breaking the whole page's layout again.
 
 ## Tech Stack
 

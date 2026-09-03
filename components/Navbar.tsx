@@ -69,7 +69,7 @@ export function Navbar() {
             type="button"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-elevated"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-elevated"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -77,7 +77,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-border bg-[rgb(var(--bg))] px-6 pb-8 pt-4 md:hidden">
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border bg-[rgb(var(--bg))] px-6 pb-8 pt-4 md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <a

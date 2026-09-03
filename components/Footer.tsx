@@ -5,8 +5,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border py-10">
-      <div className="container flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
-        <div className="text-center sm:text-left">
+      <div className="container flex flex-col flex-wrap items-center justify-center gap-x-8 gap-y-6 text-center md:flex-row md:justify-between md:text-left">
+        <div>
           <p className="font-mono text-sm font-semibold">
             <span className="text-accent">{"<"}</span>
             Reza.dev
@@ -37,7 +37,7 @@ export function Footer() {
               target={s.href.startsWith("http") ? "_blank" : undefined}
               rel={s.href.startsWith("http") ? "noreferrer" : undefined}
               aria-label={s.label}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-accent/50 hover:text-accent"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-accent/50 hover:text-accent"
             >
               <s.icon className="h-3.5 w-3.5" />
             </a>
