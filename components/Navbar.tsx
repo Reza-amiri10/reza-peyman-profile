@@ -34,7 +34,7 @@ export function Navbar() {
     >
       <nav className="container flex h-16 items-center justify-between">
         <Link
-          href="#top"
+          href="/"
           className="font-mono text-sm font-semibold tracking-tight"
           onClick={() => setOpen(false)}
         >
@@ -45,22 +45,22 @@ export function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm text-muted transition-colors hover:text-[rgb(var(--fg))]"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle />
-          <a href="#contact" className="btn-primary">
+          <Link href="/#contact" className="btn-primary">
             Let&apos;s Talk
             <ArrowUpRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -80,23 +80,23 @@ export function Navbar() {
         <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-border bg-[rgb(var(--bg))] px-6 pb-8 pt-4 md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-2 py-3 text-base text-muted transition-colors hover:bg-elevated hover:text-[rgb(var(--fg))]"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="btn-primary mt-3 w-full"
             >
               Let&apos;s Talk
               <ArrowUpRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
         </div>
       )}

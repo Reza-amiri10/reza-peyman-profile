@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { navLinks, profile, socialLinks } from "@/lib/data";
 
 export function Footer() {
@@ -19,13 +20,13 @@ export function Footer() {
 
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="transition-colors hover:text-[rgb(var(--fg))]"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 

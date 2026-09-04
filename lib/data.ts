@@ -66,11 +66,12 @@ export const socialLinks = [
 }[];
 
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Approach", href: "#approach" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Approach", href: "/#approach" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Articles", href: "/articles" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export type SkillCategory = {
@@ -257,12 +258,4 @@ export const projects: Project[] = [
 
     repo: "#",
   },
-  // {
-  //   title: "Realtime Collaboration Dashboard",
-  //   description:
-  //     "A component-driven analytics dashboard with live data sync via WebSockets, built for performance on large, frequently updating datasets.",
-  //   tags: ["React", "GraphQL", "Redis", "Tailwind CSS"],
-  //   href: "#",
-  //   repo: "#",
-  // },
 ];
