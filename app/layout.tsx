@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   // Once you verify ownership in Google Search Console, paste the
   // verification code here (Search Console -> Settings -> Ownership
   // verification -> HTML tag -> copy just the content="..." value):
-  // verification: { google: "your-verification-code" },
+  verification: { google: "CB5jL8jszLlnRblJp--CWZ31rJtPNqoGJ-7352QIeTE" },
   openGraph: {
     title: "Reza Peyman Amiri — Full-Stack Software Developer",
     description:
