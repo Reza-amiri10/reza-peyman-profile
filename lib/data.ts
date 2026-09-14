@@ -17,7 +17,8 @@ export const profile = {
   name: "Reza Peyman Amiri",
   role: "Full-Stack Software Developer",
   subrole: "Computer Science Student",
-  location: "Available for remote & on-site opportunities",
+  location:
+    "Building products • Exploring ideas • Collaborating with great teams",
   tagline:
     "Building modern, scalable, and user-focused software — from interface to infrastructure.",
   summary:
