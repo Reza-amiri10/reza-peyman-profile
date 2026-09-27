@@ -1,38 +1,37 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getAllArticlesMeta } from "@/lib/articles";
 import { ArticleCard } from "@/components/ArticleCard";
 import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
 
 export function ArticlesTeaser() {
-  const articles = getAllArticlesMeta().slice(0, 3);
+  const all = getAllArticlesMeta();
+  const articles = all.slice(0, 3);
   if (articles.length === 0) return null;
 
   return (
-    <section
-      id="articles"
-      className="section-padding border-t border-border bg-elevated/40"
-    >
+    <section id="articles" className="section">
       <div className="container">
-        <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionHeading
-            eyebrow="Writing"
-            title="Articles & thoughts"
-            description="Notes on full-stack development, backend engineering, and building real things with AI."
-          />
-          <Link
-            href="/articles"
-            className="btn-secondary shrink-0 self-start sm:self-auto"
-          >
-            View all articles
-            <ArrowUpRight className="h-4 w-4" />
-          </Link>
-        </div>
+        <SectionHeading
+          index="06"
+          eyebrow="Writing"
+          meta="changelog of ideas"
+          title="Notes from the build log."
+          description="On full-stack development, backend engineering, and building real things with AI."
+        />
 
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {articles.map((article) => (
-            <ArticleCard key={article.slug} article={article} />
+        <Reveal className="mt-14 border-t border-line">
+          {articles.map((a, i) => (
+            <ArticleCard key={a.slug} article={a} index={all.length - i} />
           ))}
+        </Reveal>
+
+        <div className="mt-8">
+          <Link href="/articles" className="btn-ghost group">
+            Full log
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </div>
       </div>
     </section>

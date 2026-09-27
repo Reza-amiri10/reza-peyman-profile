@@ -10,98 +10,62 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: {
-        DEFAULT: "1.25rem",
-        sm: "1.5rem",
-        lg: "2rem",
-      },
+      padding: { DEFAULT: "1.25rem", sm: "1.5rem", lg: "2rem" },
       screens: {
         sm: "640px",
         md: "768px",
         lg: "1024px",
         xl: "1152px",
-        "2xl": "1240px",
+        "2xl": "1200px",
       },
     },
     extend: {
-      screens: {
-        xs: "480px",
-      },
+      screens: { xs: "480px" },
       colors: {
-        ink: {
-          950: "#05070d",
-          900: "#0a0e17",
-          850: "#0d1220",
-          800: "#111827",
-          700: "#1c2333",
-          600: "#2a3245",
-          500: "#4b5468",
-        },
-        paper: {
-          50: "#fbfbfd",
-          100: "#f4f5f8",
-          200: "#e9ebf1",
-        },
+        bg: "rgb(var(--bg) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        fg: "rgb(var(--fg) / <alpha-value>)",
+        muted: "rgb(var(--fg-muted) / <alpha-value>)",
+        subtle: "rgb(var(--fg-subtle) / <alpha-value>)",
+        line: "rgb(var(--border) / <alpha-value>)",
         accent: {
-          DEFAULT: "#4f7cff",
-          light: "#7c9dff",
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          light: "#8aa6ff",
           dark: "#3a5fe0",
-          teal: "#22d3c9",
+          teal: "rgb(var(--accent-2) / <alpha-value>)",
         },
       },
       fontFamily: {
-        sans: [
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Inter",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "ui-sans-serif",
-          "system-ui",
-          "sans-serif",
-        ],
-        mono: [
-          "ui-monospace",
-          "SFMono-Regular",
-          "SF Mono",
-          "Menlo",
-          "Consolas",
-          "Liberation Mono",
-          "monospace",
-        ],
-      },
-      backgroundImage: {
-        "grid-light":
-          "linear-gradient(to right, #e9ebf1 1px, transparent 1px), linear-gradient(to bottom, #e9ebf1 1px, transparent 1px)",
-        "grid-dark":
-          "linear-gradient(to right, #ffffff0d 1px, transparent 1px), linear-gradient(to bottom, #ffffff0d 1px, transparent 1px)",
-        "hero-glow":
-          "radial-gradient(60% 50% at 50% 0%, rgba(79,124,255,0.16) 0%, rgba(79,124,255,0) 70%)",
+        sans: ["var(--font-geist-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(79,124,255,0.15), 0 8px 30px -8px rgba(79,124,255,0.35)",
-        card: "0 1px 0 0 rgba(255,255,255,0.04) inset, 0 20px 40px -20px rgba(0,0,0,0.45)",
+        glow: "0 0 0 1px rgb(var(--accent) / 0.25), 0 10px 40px -10px rgb(var(--accent) / 0.55)",
+        card: "0 1px 0 0 rgb(255 255 255 / 0.04) inset, 0 24px 48px -24px rgb(0 0 0 / 0.35)",
+        soft: "0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.12)",
       },
       keyframes: {
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(16px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" },
+        aurora: {
+          "0%, 100%": { transform: "translate3d(0,0,0) scale(1)" },
+          "50%": { transform: "translate3d(4%, -3%, 0) scale(1.08)" },
         },
-        "pulse-slow": {
-          "0%, 100%": { opacity: "0.6" },
-          "50%": { opacity: "1" },
+        blink: { "0%, 49%": { opacity: "1" }, "50%, 100%": { opacity: "0" } },
+        "scan": {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
         },
+        "dash": { to: { strokeDashoffset: "-24" } },
       },
       animation: {
-        "fade-up": "fade-up 0.7s ease-out both",
-        float: "float 6s ease-in-out infinite",
-        "pulse-slow": "pulse-slow 3s ease-in-out infinite",
+        marquee: "marquee 40s linear infinite",
+        aurora: "aurora 18s ease-in-out infinite",
+        blink: "blink 1.1s step-end infinite",
+        scan: "scan 6s linear infinite",
+        dash: "dash 1.2s linear infinite",
       },
     },
   },

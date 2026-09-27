@@ -4,8 +4,12 @@ A modern, responsive personal portfolio built with Next.js 14 (App Router), Type
 
 ## Features
 
-- Fully responsive, mobile-first layout
-- Light/dark mode toggle (persisted, no flash on load)
+- Fully responsive, mobile-first layout with a floating glass navbar and active-section highlighting
+- ⌘K / Ctrl+K command menu (search sections, articles, links; copy email; switch theme)
+- Light/dark mode toggle (persisted, no flash on load), Geist Sans + Geist Mono fonts
+- Articles with reading progress bar, sticky table of contents, deep-linkable headings, share button, and previous/next links
+- Custom 404 page, skip-to-content link, respects "reduce motion"
+- Moderated feedback section with a private review page (see below)
 - Sections: Hero, About, Skills ("What I Do"), Approach, Currently Focused On, Projects, Articles, Contact
 - An Articles section (`/articles`) for publishing your own writing — just add a markdown file, no code changes needed
 - All content lives in one place: `lib/data.ts` — edit that file to update your info without touching components
@@ -29,21 +33,37 @@ Almost everything on the site is driven by `lib/data.ts`:
 - `socialLinks` — GitHub, LinkedIn, Twitter/X, Instagram, email
 - `skillCategories` — the "What I Do" cards
 - `approachItems` / `currentFocus` — the "My Approach" section
-- `projects` — the Projects grid (currently placeholder content — replace with real projects, links, and repo URLs)
+- `projects` — the Projects grid (add `repo` to show a Source link; set `featured: true` for the large card)
+- `techStack` — the scrolling technology strip under the hero
 
 Update the values there and the whole site updates automatically.
 
-### Social links to double-check
-
-Your Twitter/X (`https://x.com`) and Instagram (`https://www.instagram.com/?hl=en`) links in `lib/data.ts` are currently generic placeholders — replace `href` with your actual profile URLs when you have them.
-
 ### Fonts
 
-The site currently uses the OS system font stack (San Francisco / Segoe UI / Roboto, etc.) so the project builds without any external network calls. If you'd like to use Google Fonts like Inter again, reintroduce `next/font/google` in `app/layout.tsx` — it works out of the box on any machine with normal internet access.
+The site uses Geist Sans and Geist Mono via the `geist` npm package, so fonts are self-hosted and the build needs no external network calls.
 
 ### Resume button
 
-The "Resume" button in the Hero section currently links to `#`. Add your resume PDF to `public/` (e.g. `public/resume.pdf`) and update the `href` in `components/Hero.tsx`.
+The Résumé button is hidden until you add one: put your PDF in `public/` (e.g. `public/resume.pdf`) and set `resumeUrl: "/resume.pdf"` in `profile` inside `lib/data.ts`.
+
+## Feedback section (moderated)
+
+Visitors can leave feedback about working with you, a client project, or a problem you solved. **Nothing is published automatically** — every entry waits in a review queue until you approve it.
+
+### One-time setup (about 5 minutes)
+
+1. **Add storage.** In your Vercel project → *Storage* (or *Integrations → Marketplace*) → add **Upstash Redis** (free tier is plenty) and connect it to this project. Vercel adds `KV_REST_API_URL` and `KV_REST_API_TOKEN` automatically.
+   (If you create the database directly at upstash.com instead, add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` yourself.)
+2. **Pick an admin key.** Add an environment variable `FEEDBACK_ADMIN_KEY` with a long random value (12+ characters). Treat it like a password.
+3. **Redeploy** so the new variables take effect.
+
+### Reviewing feedback
+
+Go to `https://peymanamiri.com/feedback/admin`, enter your admin key, then **Approve & publish**, **Unpublish** or **Delete** each entry. Approved entries appear on the home page right away.
+
+Built-in protection: a hidden honeypot field, a minimum fill time, input length limits, and a limit of 3 submissions per hour per visitor. The admin page is excluded from search engines.
+
+For local testing, put the same variables in `.env.local` (already git-ignored).
 
 ## Publishing articles
 

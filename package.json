@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mock:redis": "node scripts/mock-redis.js"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "framer-motion": "^11.11.17",
+    "geist": "^1.7.2",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.454.0",
     "marked": "^14.1.3",

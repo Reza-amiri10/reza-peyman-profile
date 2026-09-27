@@ -2,10 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { StatusBar } from "@/components/StatusBar";
 import { Analytics } from "@vercel/analytics/next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { getAllArticlesMeta } from "@/lib/articles";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
-
-const SITE_URL = "https://peymanamiri.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -156,8 +159,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfbfd" },
-    { media: "(prefers-color-scheme: dark)", color: "#080b12" },
+    { media: "(prefers-color-scheme: light)", color: "#f3f1ea" },
+    { media: "(prefers-color-scheme: dark)", color: "#090a0c" },
   ],
 };
 
@@ -166,18 +169,31 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const articles = getAllArticlesMeta().map(({ slug, title }) => ({ slug, title }));
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="font-sans antialiased">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+    >
+      <body id="top" className="font-sans antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+        >
+          Skip to content
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <Navbar articles={articles} />
           {children}
           <Footer />
+          <StatusBar />
         </ThemeProvider>
         <Analytics />
       </body>

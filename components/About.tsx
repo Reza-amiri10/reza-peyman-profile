@@ -1,58 +1,55 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ShieldCheck } from "lucide-react";
 import { profile, engineeringPractices } from "@/lib/data";
 import { SectionHeading } from "@/components/SectionHeading";
+import { Reveal } from "@/components/Reveal";
 
 export function About() {
   return (
-    <section id="about" className="section-padding border-t border-border">
+    <section id="about" className="section">
       <div className="container">
         <SectionHeading
-          eyebrow="About Me"
-          title="A full-stack developer who thinks in systems, not just screens"
+          index="01"
+          eyebrow="About"
+          meta="README.md"
+          title={
+            <>
+              A developer who thinks in <span className="text-signal">systems</span>, not just
+              screens.
+            </>
+          }
         />
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="space-y-5 text-base leading-relaxed text-muted sm:text-lg"
-          >
-            <p>{profile.summary}</p>
-            <p>{profile.focusStatement}</p>
-          </motion.div>
+        <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-10">
+          <Reveal className="lg:col-span-7">
+            <p className="pretty text-xl leading-[1.5] tracking-[-0.01em] text-fg sm:text-[1.6rem] sm:leading-[1.45]">
+              {profile.summary}
+            </p>
+            <p className="pretty mt-8 max-w-2xl border-l-2 border-accent pl-5 text-base leading-relaxed text-muted sm:text-lg">
+              {profile.focusStatement}
+            </p>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="card p-6 sm:p-8"
-          >
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 text-accent">
-                <ShieldCheck className="h-4 w-4" />
-              </span>
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">
-                Engineering Practices
-              </h3>
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <div className="border border-line bg-surface">
+              <div className="flex items-center justify-between border-b border-line px-5 py-3">
+                <span className="mono-label text-fg">Engineering practices</span>
+                <span className="mono-label">{String(engineeringPractices.length).padStart(2, "0")} items</span>
+              </div>
+              <ul>
+                {engineeringPractices.map((practice, i) => (
+                  <li
+                    key={practice}
+                    className="group flex items-start gap-4 border-b border-line px-5 py-3 last:border-b-0 transition-colors hover:bg-bg"
+                  >
+                    <span className="mt-[2px] font-mono text-[11px] text-subtle transition-colors group-hover:text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="min-w-0 flex-1 text-[14px] leading-snug text-fg/90">{practice}</span>
+                    <span className="mt-[1px] font-mono text-[11px] text-accent-teal">[✓]</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="mt-5 grid grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2">
-              {engineeringPractices.map((practice) => (
-                <li
-                  key={practice}
-                  className="flex items-start gap-2.5 text-sm leading-snug"
-                >
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <span className="min-w-0">{practice}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

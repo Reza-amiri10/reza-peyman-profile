@@ -26,6 +26,16 @@ export const profile = {
   focusStatement:
     "My primary focus is on modern web development, backend engineering, mobile development, cloud technologies, and AI-powered applications.",
   email: "gholam2015m@gmail.com",
+  /**
+   * Drop your resume PDF into /public (e.g. public/resume.pdf) and set this
+   * to "/resume.pdf". While it's empty, the Resume button stays hidden.
+   */
+  resumeUrl: "",
+  linkedin: "https://www.linkedin.com/in/reza-peyman-amiri-4362b8335/",
+  basedIn: "Turkey",
+  /** IANA time zone used for the live clock in the status bar. */
+  timeZone: "Europe/Istanbul",
+  github: "https://github.com/Reza-amiri10",
 };
 
 export const socialLinks = [
@@ -45,13 +55,13 @@ export const socialLinks = [
     label: "Twitter / X",
     href: "https://x.com/reza19184310",
     icon: Twitter,
-    handle: "@reza_amiri",
+    handle: "@reza19184310",
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/rezapeyman92/",
     icon: Instagram,
-    handle: "@reza.amiri",
+    handle: "@rezapeyman92",
   },
   {
     label: "Email",
@@ -67,13 +77,21 @@ export const socialLinks = [
 }[];
 
 export const navLinks = [
-  { label: "About", href: "/#about" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Approach", href: "/#approach" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Articles", href: "/articles" },
-  { label: "Contact", href: "/#contact" },
+  { label: "About", href: "/#about", code: "01" },
+  { label: "Stack", href: "/#skills", code: "02" },
+  { label: "Principles", href: "/#approach", code: "03" },
+  { label: "Work", href: "/#projects", code: "04" },
+  { label: "Feedback", href: "/#feedback", code: "05" },
+  { label: "Writing", href: "/articles", code: "06" },
+  { label: "Contact", href: "/#contact", code: "07" },
 ];
+
+/** The on-page section a nav link points to (Writing → the home "articles" teaser). */
+export function sectionIdOf(href: string): string | null {
+  if (href.startsWith("/#")) return href.slice(2);
+  if (href === "/articles") return "articles";
+  return null;
+}
 
 export type SkillCategory = {
   icon: LucideIcon;
@@ -218,6 +236,7 @@ export type Project = {
   description: string;
   tags: string[];
   href: string;
+  /** Public source code link. Leave out if the repo is private. */
   repo?: string;
   featured?: boolean;
 };
@@ -228,8 +247,7 @@ export const projects: Project[] = [
     description:
       "A retrieval-augmented generation (RAG) app that lets teams query private documents in natural language, with source citations and a multi-step agent workflow for follow-up tasks.",
     tags: ["Next.js", "TypeScript", "OpenAI", "pgvector", "Node.js"],
-    href: "https://www.querentapp.com/?utm_source=chatgpt.com",
-    repo: "#",
+    href: "https://www.querentapp.com/",
     featured: true,
   },
   {
@@ -238,7 +256,6 @@ export const projects: Project[] = [
       "A React Native app for field teams to log tasks offline and sync with a Go backend, with role-based auth and real-time status updates.",
     tags: ["React Native", "Go", "PostgreSQL", "REST API"],
     href: "https://www.servicetitan.com/",
-    repo: "#",
   },
   {
     title: "Persian AI Price Comparison",
@@ -255,8 +272,38 @@ export const projects: Project[] = [
       "Web Scraping",
     ],
 
-    href: "https://www.gheymatshenas.ir/?utm_source=chatgpt.com",
+    href: "https://www.gheymatshenas.ir/",
 
-    repo: "#",
   },
 ];
+
+/** Scrolling tech strip under the hero. */
+export const techStack = [
+  "TypeScript",
+  "React",
+  "Next.js",
+  "React Native",
+  "Flutter",
+  "Node.js",
+  "NestJS",
+  "Java",
+  "Python",
+  "Go",
+  "PostgreSQL",
+  "MongoDB",
+  "Redis",
+  "Docker",
+  "AWS",
+  "OpenAI",
+  "Anthropic",
+  "Tailwind CSS",
+];
+
+/** Kinds of feedback a visitor can leave. */
+export const feedbackKinds = [
+  { id: "team", code: "TEAM", label: "We worked together", hint: "Colleague, teammate or collaborator" },
+  { id: "client", code: "CLIENT", label: "Client project", hint: "Reza built something for you" },
+  { id: "fix", code: "FIX", label: "Problem solved", hint: "Reza fixed or unblocked something" },
+] as const;
+
+export type FeedbackKind = (typeof feedbackKinds)[number]["id"];
