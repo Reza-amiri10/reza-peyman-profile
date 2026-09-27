@@ -90,8 +90,13 @@ function Row({ fb, mode }: { fb: Feedback; mode: "pending" | "approved" }) {
   );
 }
 
-export default async function FeedbackAdminPage() {
-  if (!process.env.FEEDBACK_ADMIN_KEY || process.env.FEEDBACK_ADMIN_KEY.length < 12) {
+export default async function FeedbackAdminPage({
+  searchParams,
+}: {
+  searchParams: { error?: string };
+}) {
+  const configuredKey = (process.env.FEEDBACK_ADMIN_KEY ?? "").trim().replace(/^(['"])(.*)\1$/, "$2");
+  if (configuredKey.length < 12) {
     return (
       <Shell>
         <h1 className="mt-12 text-4xl font-medium tracking-[-0.04em]">Admin key not set.</h1>
@@ -107,6 +112,13 @@ export default async function FeedbackAdminPage() {
     return (
       <Shell>
         <h1 className="mt-12 text-4xl font-medium tracking-[-0.04em]">Sign in to review.</h1>
+        {searchParams.error && (
+          <p role="alert" className="mt-6 max-w-md border-l-2 border-accent bg-accent/5 px-4 py-3 text-sm">
+            That key doesn&apos;t match <code className="font-mono">FEEDBACK_ADMIN_KEY</code>. Check for typos — and if
+            you changed the key recently, restart <code className="font-mono">npm run dev</code> (locally) or redeploy
+            (on Vercel).
+          </p>
+        )}
         <form action={login} className="mt-8 flex max-w-md gap-2">
           <input
             name="key"

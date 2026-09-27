@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { revalidatePath, revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 import { createHash, timingSafeEqual } from "crypto";
 import {
   FEEDBACK_TAG,
@@ -16,16 +17,29 @@ function digest(v: string) {
   return createHash("sha256").update(v).digest();
 }
 
+/** Trims spaces/newlines and stray surrounding quotes (a common copy-paste slip). */
+function normalise(v: string | undefined | null): string {
+  return (v ?? "").trim().replace(/^(['"])(.*)\1$/, "$2").trim();
+}
+
+function adminSecret(): string {
+  return normalise(process.env.FEEDBACK_ADMIN_KEY);
+}
+
+function matches(candidate: string): boolean {
+  const secret = adminSecret();
+  if (secret.length < 12 || !candidate) return false;
+  return timingSafeEqual(digest(normalise(candidate)), digest(secret));
+}
+
 /** True when the request carries the right admin key (in the cookie). */
 export async function isAdmin(): Promise<boolean> {
-  const secret = process.env.FEEDBACK_ADMIN_KEY;
-  const got = cookies().get(COOKIE)?.value;
-  if (!secret || secret.length < 12 || !got) return false;
-  return timingSafeEqual(digest(got), digest(secret));
+  return matches(cookies().get(COOKIE)?.value ?? "");
 }
 
 export async function login(formData: FormData) {
-  const key = String(formData.get("key") ?? "");
+  const key = normalise(String(formData.get("key") ?? ""));
+  if (!matches(key)) redirect("/feedback/admin?error=1");
   cookies().set(COOKIE, key, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
@@ -33,7 +47,7 @@ export async function login(formData: FormData) {
     path: "/feedback/admin",
     maxAge: 60 * 60 * 24 * 30,
   });
-  revalidatePath("/feedback/admin");
+  redirect("/feedback/admin");
 }
 
 export async function logout() {
